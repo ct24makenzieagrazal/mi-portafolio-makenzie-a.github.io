@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Makenzie Agraz - Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary-blue:#4a6fa5;
+  --accent-blue:#6b8fc4;
+  --dark-blue:#1a2a47;
+  --text:#333;
+  --tag-bg:#e0e8f5;
+  --tag-color:#4a6fa5;
+  --soft-bg:#f7f9fc;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:75px}
+body{font-family:'Open Sans',sans-serif;color:var(--text);line-height:1.6;background:#fff;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;color:var(--dark-blue)}
+.container{max-width:1200px;margin:auto;padding:40px 20px}
+
+/* ---------- SCROLL REVEAL ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ---------- NAV ---------- */
+nav{background:rgba(26,42,71,.97);backdrop-filter:blur(8px);padding:16px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+nav ul{display:flex;justify-content:center;list-style:none;flex-wrap:wrap;gap:20px}
+nav a{color:#fff;text-decoration:none;font-size:.85rem;text-transform:uppercase;letter-spacing:1px;font-weight:600;position:relative;padding-bottom:4px;transition:color .3s}
+nav a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:linear-gradient(90deg,var(--accent-blue),#b9cce7);transition:width .3s,left .3s;border-radius:2px}
+nav a:hover{color:#b9cce7}
+nav a:hover::after{width:100%;left:0}
+
+/* ---------- HERO ---------- */
+.hero{display:flex;align-items:center;justify-content:space-between;padding:55px 20px;max-width:1200px;margin:auto;gap:40px}
+.hero-text{flex:1;text-align:center}
+.hero-text h1{font-size:clamp(2.6rem,5vw,4.2rem);line-height:1.1;color:var(--primary-blue);margin-bottom:10px;letter-spacing:2px}
+.hero-text h2{font:600 1.2rem 'Open Sans',sans-serif;letter-spacing:2px;margin-bottom:15px;text-transform:uppercase;color:var(--dark-blue)}
+.hero-text p{font-size:1.05rem;letter-spacing:1px;color:var(--primary-blue);font-weight:600;margin-bottom:25px}
+.btn-cv{display:inline-block;padding:14px 30px;background:linear-gradient(135deg,var(--primary-blue),var(--accent-blue));color:#fff;text-decoration:none;border-radius:30px;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:.9rem;transition:transform .3s,box-shadow .3s;box-shadow:0 6px 15px rgba(74,111,165,.3)}
+.btn-cv:hover{transform:translateY(-3px);box-shadow:0 10px 20px rgba(74,111,165,.4)}
+.hero-image{flex:1;display:flex;justify-content:center}
+.hero-image img{width:100%;max-width:400px;height:460px;object-fit:cover;object-position:center 20%;border-radius:14px;box-shadow:0 20px 40px rgba(74,111,165,.25);transition:transform .4s ease}
+.hero-image img:hover{transform:scale(1.02)}
+
+/* ---------- ABOUT (AHORA CON VIDEO) ---------- */
+.about{display:flex;align-items:center;gap:40px;max-width:1000px;margin:auto;padding:40px 20px}
+.about-text{flex:1}
+.about-text h2{text-align:left;font-size:2.5rem;margin-bottom:20px;color:var(--primary-blue)}
+.about-text p{font-size:1.05rem;text-align:justify;color:#444}
+.about-image{flex:1;display:flex;justify-content:center;align-items:center}
+/* Estilos para el video */
+.about-image video{width:100%;height:350px;object-fit:cover;border-radius:14px;box-shadow:0 10px 25px rgba(0,0,0,.15);background:#000}
+
+/* ---------- SECTION TITLES ---------- */
+.section-title{font-size:clamp(2rem,4vw,3rem);color:var(--primary-blue);margin:60px 0 40px;letter-spacing:2px;text-align:center;position:relative}
+.section-title::after{content:'';display:block;width:70px;height:3px;background:linear-gradient(90deg,var(--primary-blue),var(--accent-blue),#b9cce7);margin:15px auto 0;border-radius:2px}
+
+/* ---------- GRIDS & CARDS ---------- */
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-bottom:40px}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(400px,1fr));gap:30px;margin-bottom:40px;max-width:1000px;margin-left:auto;margin-right:auto}
+
+.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.06);display:flex;flex-direction:column;border:1px solid #eef1f6;transition:transform .3s ease,box-shadow .3s ease}
+.card:hover{transform:translateY(-8px);box-shadow:0 15px 35px rgba(74,111,165,.18)}
+.card img{width:100%;height:200px;object-fit:cover;transition:transform .5s ease}
+.card:hover img{transform:scale(1.05)}
+.card-content{padding:22px;flex-grow:1;display:flex;flex-direction:column}
+.card-content h3{font:700 1.05rem 'Open Sans',sans-serif;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px}
+.card-content .subtitle{font-size:.85rem;color:var(--primary-blue);font-weight:700;margin-bottom:15px;text-transform:uppercase}
+.card-content p{font-size:.85rem;color:#666;margin-bottom:20px;flex-grow:1;line-height:1.6;text-align:justify}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{background:var(--tag-bg);color:var(--tag-color);padding:5px 12px;border-radius:15px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;transition:background .3s,color .3s}
+.card:hover .tag{background:var(--primary-blue);color:#fff}
+.card.edu-card img{height:450px;object-position:center 15%}
+
+/* ---------- CV SECTION ---------- */
+.cv-container{max-width:900px;margin:0 auto 40px;padding:30px;background:#fff;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,.05);border:1px solid #eef1f6}
+.cv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.cv-item{display:flex;align-items:center;gap:15px;padding:15px;background:var(--soft-bg);border-radius:10px;border:1px solid #eef1f6;transition:transform .3s ease, box-shadow .3s ease}
+.cv-item:hover{transform:translateY(-3px);box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.cv-icon{font-size:1.4rem;background:#fff;width:45px;height:45px;display:flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.cv-text{display:flex;flex-direction:column}
+.cv-label{font-size:.7rem;font-weight:700;color:#8892b0;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.cv-value{font-size:.95rem;color:var(--dark-blue);font-weight:600;word-break:break-word}
+.cv-value a{color:var(--primary-blue);text-decoration:none;transition:color .3s}
+.cv-value a:hover{color:var(--accent-blue);text-decoration:underline}
+.status-badge{display:inline-block;background:#e6f7eb;color:#1e8e3e;padding:4px 12px;border-radius:15px;font-size:.8rem;font-weight:700;margin-top:2px}
+.cv-download-wrapper{text-align:center;margin-top:35px;border-top:1px solid #eef1f6;padding-top:25px}
+
+/* ---------- ACHIEVEMENTS ---------- */
+.achievements-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;padding:20px 0}
+.achievements-grid img{height:90px;width:160px;object-fit:contain;background:#fff;padding:12px;border-radius:10px;border:1px solid #eef1f6;box-shadow:0 4px 12px rgba(0,0,0,.04);transition:transform .3s ease,box-shadow .3s ease}
+.achievements-grid img:hover{transform:translateY(-5px) scale(1.04);box-shadow:0 10px 25px rgba(74,111,165,.15)}
+
+/* ---------- SKILLS ---------- */
+.skills-container{display:flex;gap:40px;max-width:1000px;margin:auto;padding:20px}
+.skills-column{flex:1;background:#fff;border:1px solid #eef1f6;border-radius:14px;padding:28px;box-shadow:0 6px 20px rgba(0,0,0,.05)}
+.skills-column h3{text-align:left;font:700 1.2rem 'Open Sans',sans-serif;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.skill-item{margin-bottom:18px}
+.skill-name{font-size:.85rem;font-weight:600;margin-bottom:8px;display:block;color:#444}
+.skill-bar{height:9px;background:#eef1f6;border-radius:5px;overflow:hidden}
+.skill-progress{height:100%;background:linear-gradient(90deg,var(--primary-blue),var(--accent-blue));border-radius:5px;transition:width 1.2s ease}
+.soft-skills-list{list-style:none}
+.soft-skills-list li{font-size:.9rem;margin-bottom:12px;padding-left:22px;position:relative;color:#555}
+.soft-skills-list li::before{content:'✓';color:var(--primary-blue);position:absolute;left:0;font-weight:bold;font-size:1rem}
+
+/* ---------- TOOLS ---------- */
+.tools-section{text-align:center;margin:55px 0 20px}
+.tools-section h3{font:700 1.2rem 'Open Sans',sans-serif;margin-bottom:22px;letter-spacing:2px}
+.tools-icons{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+.tools-icons span{background:linear-gradient(135deg,#e8edf5,#dce5f2);color:#2c4366;border-radius:10px;padding:12px 18px;font-weight:700;font-size:.85rem;transition:transform .3s,box-shadow .3s}
+.tools-icons span:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(74,111,165,.2)}
+
+/* ---------- CONTACT SECTION ---------- */
+.contact-section{background:linear-gradient(135deg,#f7f9fc 0%,#eef2f9 100%);padding:80px 20px;margin-top:60px;position:relative;overflow:hidden}
+.contact-section::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:radial-gradient(circle,rgba(74,111,165,.12),transparent 70%);border-radius:50%}
+.contact-section::after{content:'';position:absolute;bottom:-80px;left:-80px;width:250px;height:250px;background:radial-gradient(circle,rgba(107,143,196,.12),transparent 70%);border-radius:50%}
+.contact-container{max-width:700px;margin:auto;position:relative;z-index:1}
+.contact-container .section-title{margin-top:0}
+.contact-subtitle{text-align:center;color:#5a6b85;font-size:1rem;margin-bottom:40px;font-style:italic}
+.contact-form{background:#fff;padding:40px;border-radius:18px;box-shadow:0 20px 50px rgba(74,111,165,.12);border:1px solid #e8eef6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-group{display:flex;flex-direction:column;margin-bottom:20px}
+.form-group label{font-size:.85rem;font-weight:700;color:var(--dark-blue);margin-bottom:8px;letter-spacing:.5px;text-transform:uppercase}
+.form-group input,.form-group textarea{width:100%;padding:14px 16px;border:2px solid #e8eef6;border-radius:10px;font-family:'Open Sans',sans-serif;font-size:.95rem;color:#333;background:#fafbfd;transition:border-color .3s,background .3s,box-shadow .3s;outline:none;resize:vertical}
+.form-group input::placeholder,.form-group textarea::placeholder{color:#a0aec0}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--primary-blue);background:#fff;box-shadow:0 0 0 4px rgba(74,111,165,.12)}
+.submit-btn{width:100%;padding:16px;background:linear-gradient(135deg,var(--primary-blue),var(--accent-blue));color:#fff;border:none;border-radius:10px;font-family:'Open Sans',sans-serif;font-size:1rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:transform .3s,box-shadow .3s;margin-top:10px}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 12px 25px rgba(74,111,165,.35)}
+.submit-btn:active{transform:translateY(0)}
+
+/* ---------- FOOTER ---------- */
+footer{background:linear-gradient(135deg,var(--dark-blue),var(--primary-blue));color:#fff;text-align:center;padding:50px 20px 30px;margin-top:0}
+footer img{width:100%;max-width:350px;height:250px;object-fit:cover;object-position:center 30%;border-radius:14px;margin-bottom:25px;box-shadow:0 15px 40px rgba(0,0,0,.3)}
+footer p{font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;color:#cfdbee}
+footer h4{color:#fff;font-size:1.6rem;margin-top:5px;margin-bottom:15px}
+footer .footer-links{display:flex;justify-content:center;gap:25px;margin-top:20px;flex-wrap:wrap}
+footer .footer-links a{color:#fff;text-decoration:none;font-size:.9rem;padding:8px 18px;border:1px solid rgba(255,255,255,.3);border-radius:25px;transition:background .3s,border-color .3s}
+footer .footer-links a:hover{background:rgba(255,255,255,.15);border-color:#fff}
+footer .copyright{margin-top:30px;font-size:.75rem;color:#9fb3d1;letter-spacing:1px;text-transform:none}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:768px){
+  nav ul{gap:10px;padding:0 10px}
+  nav a{font-size:.65rem}
+  .hero,.about,.skills-container{flex-direction:column}
+  .hero-text h1{font-size:2.7rem}
+  .hero-image img{height:370px}
+  .about-text h2{text-align:center}
+  .about-image video{height:280px} /* Ajuste de video en móvil */
+  .skills-container{padding:10px}
+  .skills-column{width:100%}
+  .contact-form{padding:25px}
+  .form-row{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
+  .card.edu-card img{height:350px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About Me</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-text">
+    <h1>MAKENZIE<br>AGRAZAL</h1>
+    <h2>Future Engineer</h2>
+    <p>ROBOTICS • STEM • INNOVATION</p>
+    <a href="assets/Makenzie_Agrazal_CV.pdf" download class="btn-cv">📄 Download CV</a>
+  </div>
+  <div class="hero-image">
+    <img src="assets/img36.png" alt="Makenzie at a STEM event">
+  </div>
+</section>
+
+<!-- ABOUT CON VIDEO -->
+<section id="about" class="about reveal">
+  <div class="about-text">
+    <h2>ABOUT<br>ME</h2>
+    <p>Hi! I'm Makenzie Agrazal, a high school student from Panama passionate about robotics, engineering, and innovation. I enjoy designing technological solutions, participating in STEM competitions, and working with multidisciplinary teams to solve real-world problems. My goal is to study Mecatronic engineering at an international university and continue to develop innovative technologies that improve people's lives.</p>
+  </div>
+  <div class="about-image">
+    <!-- VIDEO AGREGADO AQUÍ -->
+    <video controls autoplay loop muted playsinline poster="assets/about-poster.jpg">
+      <source src="assets/about-me-video.mp4" type="video/mp4">
+      Tu navegador no soporta la etiqueta de video.
+    </video>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<div class="container" id="education">
+  <h2 class="section-title">EDUCATION</h2>
+  
+  <div class="grid-2">
+    <div class="card edu-card reveal">
+      <img src="assets/graduation-blue.jpg" alt="Makenzie Graduation">
+      <div class="card-content">
+        <h3>High School Diploma in Science</h3>
+        <div class="subtitle">Colegio Ingeniero Tomás Guardia • Class of 2026</div>
+        <p>I graduated with a High School Diploma in Science. During my time at this institution, I began my journey in technology through the Robotics Club, where I developed my programming skills, explored robotics, and discovered exciting opportunities to participate in technological projects, innovation competitions, and scientific exhibitions. This experience marked the beginning of my passion for technology, programming, and innovation, motivating me to continue creating solutions that make a difference.</p>
+        <div class="tags">
+          <span class="tag">Science</span>
+          <span class="tag">Robotics Club</span>
+          <span class="tag">Class of 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card edu-card reveal">
+      <img src="assets/superate-red.jpg" alt="Makenzie Supérate Graduate">
+      <div class="card-content">
+        <h3>Graduate</h3>
+        <div class="subtitle">Centro ¡Supérate! • Class of 2026</div>
+        <p>I graduated from Centro ¡Supérate!, where I strengthened my technical, academic, and professional skills. During the program, I completed certifications in Microsoft Excel and TOEIC English, developing my abilities in data management, spreadsheet tools, and English language proficiency. This experience contributed to my personal and professional growth, preparing me for new academic and technological opportunities.</p>
+        <div class="tags">
+          <span class="tag">Microsoft Excel</span>
+          <span class="tag">TOEIC English</span>
+          <span class="tag">Class of 2026</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS & EXPERIENCE -->
+<div class="container" id="projects">
+
+  <h2 class="section-title">PROJECTS</h2>
+  <div class="grid-3">
+    <div class="card reveal"><img src="assets/img9.png" alt="Robot prototype"><div class="card-content"><h3>WRO FUTURE ENGINEERS</h3><p>Designed, built, and programmed an autonomous robot for the WRO Future Engineers competition.
+I contributed to the electronics, programming, testing, and
+optimization of the robot, improving my technical skills in robotics, embedded systems, and teamwork.</p><div class="tags"><span class="tag">Research</span><span class="tag">Innovation</span><span class="tag">Technology</span></div></div></div>
+    
+    <div class="card reveal"><img src="assets/img11.png" alt="Robotics event"><div class="card-content"><h3>PA LANTE CON EL SABER</h3><p>Collaborated in the vocational guidance program "Pa' Lante con el Saber," supporting high school students through STEM activities and career orientation. This experience strengthened my communication, leadership, and community engagement skills.</p><div class="tags"><span class="tag">Robotics</span><span class="tag">Programming</span><span class="tag">Electronics</span></div></div></div>
+    
+    <div class="card reveal"><img src="assets/img18.png" alt="STEM presentation"><div class="card-content"><h3>ISTNOVA PROJECT</h3><p>Participated in the ISTNOVA Science Fair, where I presented an innovative solution focused on agricultural techonolgy and sustainability. This project strengthened my research, engineering, and problem-solving skills while reinforcing my passion for developing technological solutions with real-world impact.</p><div class="tags"><span class="tag">Education</span><span class="tag">Leadership</span></div></div></div>
+    
+    <div class="card reveal"><img src="assets/img13.png" alt="Agrobot project"><div class="card-content"><h3>AGROBOT</h3><p>AgroBot is an autonomous agricultural robot designed to assist in crop monitoring and precision farming tasks. it navigates through fields, detects obstacles, and collects data to help farmers make faster and more accurate decisions. This project strengthened my skills in robotics, electronics, and programming.</p><div class="tags"><span class="tag">Robotics</span><span class="tag">Automation</span><span class="tag">Agriculture</span></div></div></div>
+    
+    <div class="card reveal"><img src="assets/img14.png" alt="Agroscan project presentation"><div class="card-content"><h3>AGROSCAN</h3><p>AgroScan is a smart system that uses sensors and image processing to detect plant diseases and assess crop health in real time. It allows farmers to identify problems early and improve yield while reducing the use of chemicals. This project enhanced my knowledge in loT, data analysis, and artificial intelligence.</p><div class="tags"><span class="tag">AI</span><span class="tag">Data</span><span class="tag">Agriculture</span></div></div></div>
+    
+    <div class="card reveal"><img src="assets/img15.png" alt="EcoSmart sustainability project"><div class="card-content"><h3>ECOSMART</h3><p>EcoSmart is a recycling and awareness project created to promote sustainability and a cleaner environment. With our innovative solution, we participated in the Ciena Solutions Challenges and won 1st place. This experience strengthened my skills in innovation, teamwork, and social impact.</p><div class="tags"><span class="tag">Sustainability</span><span class="tag">IoT</span><span class="tag">Environment</span></div></div></div>
+    
+    <div class="card reveal">
+      <img src="assets/hidronexys.jpg" alt="Hidronexys Hydroponics Project">
+      <div class="card-content">
+        <h3>HIDRONEXYS</h3>
+        <p>I participated as a programmer in the development of this hydroponics project alongside my fellow students from the ¡Supérate! program. I contributed to the project's technological development and collaborated with my teammates to bring the idea to life.</p>
+        <div class="tags">
+          <span class="tag">Programming</span>
+          <span class="tag">Hydroponics</span>
+          <span class="tag">STEM</span>
+          <span class="tag">2025</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card reveal">
+      <img src="assets/panarrot.jpg" alt="Panarrot Expotech 2026">
+      <div class="card-content">
+        <h3>PANARROT</h3>
+        <p>Panarrot was a tourism-focused project designed to offer travel packages across Panama, providing visitors with unforgettable experiences throughout the country. I contributed to the development of the project's website, helping build its digital platform and online presence.</p>
+        <div class="tags">
+          <span class="tag">Tourism</span>
+          <span class="tag">Web Development</span>
+          <span class="tag">Expotech</span>
+          <span class="tag">2026</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="section-title" id="experience">EXPERIENCE</h2>
+  <div class="grid-3">
+    <div class="card reveal"><img src="assets/img16.png" alt="LLAC"><div class="card-content"><h3>LLAC</h3><p>Completed a leadership program focused on communication, teamwork, and social responsibility. Developed skills to collaborate with others and create meaningful impact through community projects.</p><div class="tags"><span class="tag">Business</span><span class="tag">Project Management</span></div></div></div>
+    <div class="card reveal"><img src="assets/img7.png" alt="Technology course"><div class="card-content"><h3>TELEVISION INTERVIEWS</h3><p>Participated in televisión interview to share my 
+experiences in STEM, robotics, and innovation projects. These opportunities helped me develop communication skills and the ability to inspire others by sharing my journey in technology and engineering.</p><div class="tags"><span class="tag">BEVISIONEERS</span><span class="tag">Innovation</span></div></div></div>
+    <div class="card reveal"><img src="assets/img17.png" alt="Leadership experience"><div class="card-content"><h3>NASA COURSES, ASTRONOMY CONFERENCES</h3><p>A Particinated in course, talks, and conferences related to NASA, astronomy, and space exploration. These experiences strengthened my passion for astrophysics, engineering, and understanding the universe through science and
+technology.</p><div class="tags"><span class="tag">Leadership</span><span class="tag">Teamwork</span></div></div></div>
+    <div class="card reveal"><img src="assets/img21.png" alt="Team collaboration"><div class="card-content"><h3>BEVISIONEERS</h3><p>Participated in the Be Visioneers program, a
+global fellowship focused on supporting young innovators developing solutions for sustainability and environmental challenges. This experience strengthened my entrepreneurial mindset and commitment to creating positive impact.</p><div class="tags"><span class="tag">Problem Solving</span><span class="tag">Collaboration</span></div></div></div>
+    <div class="card reveal"><img src="assets/img20.png" alt="Community volunteering"><div class="card-content"><h3>TECHO</h3><p>Participated in community-focused activities with
+TECHO, collaborating in initiatives that promote social development and support communities through volunteer work.</p><div class="tags"><span class="tag">Community</span><span class="tag">Volunteering</span></div></div></div>
+    <div class="card reveal"><img src="assets/img19.png" alt="Peace Boat experience"><div class="card-content"><h3>Peace Boat</h3><p>Participated in an international event focused on sustainability, blue economy, and environmental innovation. This experience strengthened my interest in developing solutions for global challenges.</p><div class="tags"><span class="tag">Leadership</span><span class="tag">Global Awareness</span></div></div></div>
+  </div>
+
+  <h2 class="section-title">ACHIEVEMENTS</h2>
+  <div class="achievements-grid reveal">
+    <img src="assets/img23.png" alt="Camp Tech">
+    <img src="assets/img25.png" alt="Technovation">
+    <img src="assets/img26.png" alt="Steam Girls">
+    <img src="assets/img27.png" alt="Scratch">
+    <img src="assets/img28.png" alt="Caminos del Ingenio">
+    <img src="assets/img30.png" alt="LLAC">
+    <img src="assets/img31.png" alt="Gen Tec">
+    <img src="assets/img32.png" alt="Panama STEM Challenge">
+    <img src="assets/img33.png" alt="Innova Nation">
+    <img src="assets/img34.png" alt="STEM achievement">
+  </div>
+
+  <h2 class="section-title" id="skills">SKILLS</h2>
+  <div class="skills-container reveal">
+    <div class="skills-column">
+      <h3>⚙️ TECHNICAL SKILLS</h3>
+      <div class="skill-item"><span class="skill-name">Programming (Python, C++, Arduino IDE)</span><div class="skill-bar"><div class="skill-progress" style="width:85%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Robotics & Automation</span><div class="skill-bar"><div class="skill-progress" style="width:90%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Embedded Systems</span><div class="skill-bar"><div class="skill-progress" style="width:75%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">3D Design & Prototyping</span><div class="skill-bar"><div class="skill-progress" style="width:70%"></div></div></div>
+      <div class="skill-item"><span class="skill-name">Data Analysis</span><div class="skill-bar"><div class="skill-progress" style="width:65%"></div></div></div>
+    </div>
+    <div class="skills-column">
+      <h3>💡 SOFT SKILLS</h3>
+      <ul class="soft-skills-list">
+        <li><strong>Leadership:</strong> Experience leading projects and teams to achieve goals.</li>
+        <li><strong>Effective Communication:</strong> Ability to convey ideas clearly.</li>
+        <li><strong>Teamwork:</strong> Works effectively in multidisciplinary teams.</li>
+        <li><strong>Critical Thinking:</strong> Analyzes problems and finds solutions.</li>
+        <li><strong>Adaptability:</strong> Thrives in dynamic environments.</li>
+        <li><strong>Time Management:</strong> Balances academics and projects.</li>
+        <li><strong>Creativity:</strong> Approaches challenges with innovative ideas.</li>
+        <li><strong>Attention to Detail:</strong> Values precision in engineering tasks.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tools-section">
+    <h3>• TOOLS & TECHNOLOGIES •</h3>
+    <div class="tools-icons">
+      <span>Python</span><span>Java</span><span>HTML</span><span>CSS</span>
+      <span>JavaScript</span><span>Arduino</span><span>C++</span><span>Git</span>
+      <span>Excel</span><span>Office</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ========== SECCIÓN CV & PERSONAL INFO CON BOTÓN ========== -->
+<div class="container" id="cv">
+  <h2 class="section-title">CV & PERSONAL INFO</h2>
+  <div class="cv-container reveal">
+    <div class="cv-grid">
+      
+      <div class="cv-item">
+        <div class="cv-icon">🎂</div>
+        <div class="cv-text">
+          <span class="cv-label">Date of Birth</span>
+          <span class="cv-value">16 March 2009</span>
+        </div>
+      </div>
+      
+      <div class="cv-item">
+        <div class="cv-icon">📱</div>
+        <div class="cv-text">
+          <span class="cv-label">Phone</span>
+          <span class="cv-value">+507 6813-7237</span>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-icon">✉️</div>
+        <div class="cv-text">
+          <span class="cv-label">Email</span>
+          <span class="cv-value"><a href="mailto:makenzieagrazal@gmail.com">makenzieagrazal@gmail.com</a></span>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-icon">📍</div>
+        <div class="cv-text">
+          <span class="cv-label">Location</span>
+          <span class="cv-value">La Chorrera, Panama Oeste, Panama</span>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-icon">🗣️</div>
+        <div class="cv-text">
+          <span class="cv-label">Languages</span>
+          <span class="cv-value">Spanish, B2 English, HSK 1</span>
+        </div>
+      </div>
+
+      <div class="cv-item">
+        <div class="cv-icon">💼</div>
+        <div class="cv-text">
+          <span class="cv-label">Status</span>
+          <span class="cv-value"><span class="status-badge">Open to opportunities</span></span>
+        </div>
+      </div>
+
+    </div>
+    
+    <!-- BOTÓN DE DESCARGA DENTRO DE LA SECCIÓN CV -->
+    <div class="cv-download-wrapper">
+      <a href="assets/Makenzie_Agrazal_CV.pdf" download class="btn-cv">📄 Download Full CV (PDF)</a>
+    </div>
+
+  </div>
+</div>
+<!-- ========== FIN SECCIÓN CV ========== -->
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="contact-section">
+  <div class="contact-container">
+    <h2 class="section-title">CONTACT ME</h2>
+    <p class="contact-subtitle">Have a project in mind, a question, or just want to say hi? I'd love to hear from you!</p>
+
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject / Title</label>
+        <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea id="comment" name="comment" rows="6" placeholder="Write your message here..." required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">✉ Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="assets/img10.png" alt="Makenzie at a Panama STEM event">
+  <p>🌟 A PROUD STUDENT AT THE PANAMA CANAL 🌟</p>
+  <h4>CAIAC DE PANAMÁ</h4>
+  <div class="footer-links">
+    <a href="mailto:makenzieagrazal@gmail.com">📧 Email</a>
+    <a href="https://linkedin.com/in/makenzieagrazal" target="_blank" rel="noopener">💼 LinkedIn</a>
+    <a href="#home">⬆ Back to top</a>
+  </div>
+  <p class="copyright">© 2026 Makenzie Agraz · Designed with ❤️ in Panama</p>
+</footer>
+
+<!-- SCROLL REVEAL SCRIPT -->
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
